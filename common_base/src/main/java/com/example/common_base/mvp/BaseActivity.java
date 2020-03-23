@@ -1,6 +1,5 @@
 package com.example.common_base.mvp;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -18,7 +17,6 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
-//import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
  * Created by sky 2020-02-23.
@@ -38,23 +36,40 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected abstract void initData(Bundle savedInstanceState);
 
     @Override
-    public AndroidInjector<Fragment> supportFragmentInjector(){
+    public AndroidInjector<Fragment> supportFragmentInjector() {
         return mFragmentInjector;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Dagger2注入
         AndroidInjection.inject(this);
-        super.onCreate(savedInstanceState);
-        //获取视图（外部实现）
-        setContentView(getLayoutId());
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+
         //ARouter注入本类对象
         ARouter.getInstance().inject(this);
+
+        super.onCreate(savedInstanceState);
+
+        //获取视图（外部实现）
+        setContentView(getLayoutId());
+
+        //绑定寿命周期
+        getLifecycle().addObserver(mPresenter);
+        mPresenter.setLifecycleOwner(this);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+
         //初始化布局（外部实现）
         initLayout(savedInstanceState);
+
         //初始化数据（外部是实现）
         initData(savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getLifecycle().removeObserver(mPresenter);
     }
 
     //用资源ID冒泡提示
@@ -65,6 +80,24 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     //用字符串冒泡提示
     protected void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    //用资源ID冒泡提示
+    protected void toastLong(int resId) {
+        Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
+    }
+
+    //用字符串冒泡提示
+    protected void toastLong(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    protected void showArsLoadingDialog(Boolean cancelable, Boolean canceledOnTouchOutside) {
+        //loading图加载
+    }
+
+    protected void hideArsLoadingDialog() {
+        //loading图关闭
     }
 
 }
