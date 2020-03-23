@@ -12,10 +12,6 @@ import javax.inject.Inject;
  * Created by sky 2020-02-23.
  */
 public class  SplashPresenter extends BasePresenter<SplashContract.View, SplashContract.Model> {
-//    @Inject
-//    SplashPresenter(){
-//
-//    }
     @Inject
     SplashPresenter(SplashContract.View view, SplashContract.Model model) {
         super(view, model);

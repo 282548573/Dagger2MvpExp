@@ -1,2 +1,2 @@
-include ':app', ':library', ':common_base'
+include ':app', ':library', ':common_base', ':module_home', ':module_disk', ':module_chat', ':module_mine'
 rootProject.name='Dagger2MvpExp'
