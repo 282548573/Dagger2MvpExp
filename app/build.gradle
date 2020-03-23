@@ -41,6 +41,12 @@ dependencies {
 
     kapt rootProject.ext.dependencies["arouter-compiler"]
 
+
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
+    kapt rootProject.ext.dependencies["dagger-android-processor"]
+//    kapt rootProject.ext.dependencies["arouter-compiler"]
+//    kapt rootProject.ext.dependencies["glide-compiler"]
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

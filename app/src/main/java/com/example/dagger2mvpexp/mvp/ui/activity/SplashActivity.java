@@ -12,6 +12,7 @@ import com.example.dagger2mvpexp.mvp.presenter.SplashPresenter;
  */
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_splash;
@@ -24,6 +25,9 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        if (null != mPresenter){
+            mPresenter.launch();
+        }
 
     }
 

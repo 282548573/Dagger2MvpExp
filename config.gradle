@@ -26,6 +26,8 @@ project.ext {
             guava                         : "28.0-android",
             // koin
             koin                          : "2.1.0-alpha-10",
+            // dagger
+            dagger2                       : "2.22",
             // rx
             rxjava2                       : "2.3.0",
             rxkotlin2                     : "2.4.0",
@@ -97,7 +99,14 @@ project.ext {
             "photodraweeview"             : "me.relex:photodraweeview:${version["photodraweeview"]}",
 
             "glide"                       : "com.github.bumptech.glide:glide:${version["glide"]}",
-            "glide-compiler"              : "com.github.bumptech.glide:compiler:${version["glide"]}"
+            "glide-compiler"              : "com.github.bumptech.glide:compiler:${version["glide"]}",
+
+
+            "dagger2"                     : "com.google.dagger:dagger:${version["dagger2"]}",
+            "dagger2-compiler"            : "com.google.dagger:dagger-compiler:${version["dagger2"]}",
+            "dagger-android"              : "com.google.dagger:dagger-android:${version["dagger2"]}",
+            "dagger-android-support"      : "com.google.dagger:dagger-android-support:${version["dagger2"]}",
+            "dagger-android-processor"    : "com.google.dagger:dagger-android-processor:${version["dagger2"]}",
     ]
 
 

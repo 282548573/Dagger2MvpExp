@@ -104,6 +104,14 @@ dependencies {
     api rootProject.ext.dependencies["glide"]
     kapt rootProject.ext.dependencies["glide-compiler"]
 
+
+    // dagger2
+    api rootProject.ext.dependencies["dagger2"]
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
+    api rootProject.ext.dependencies["dagger-android"]
+    api rootProject.ext.dependencies["dagger-android-support"]
+    kapt rootProject.ext.dependencies["dagger-android-processor"]
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
